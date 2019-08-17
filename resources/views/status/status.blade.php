@@ -7,7 +7,6 @@
       @isset($msg)
       @if($msg != null)
       {{$msg}}
-      @else
       @endif
       @endisset
     <form action = "/status/add" method  ="post">
