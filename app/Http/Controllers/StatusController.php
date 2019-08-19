@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Status;
+use App\User;
 use Carbon\Carbon;
 
 class StatusController extends Controller
@@ -15,23 +16,16 @@ class StatusController extends Controller
     }
 
     public function create(Request $request){
-      if(Status::query()->where('kinmu_flag','=','1')->count()>= 1){
+      if(User::isWork()){
         return view('status.status',['msg'=>'あなたは出勤済です']);
       }
-      $status = new Status;
-      $status->user_id = Auth::user()->id;
-      $status->kinmu_flag = 1;
-      $status->place = "";
-      $status->date = Carbon::today()->format('Y/m/d');
-      $status->end_time = null;
-      $status->begin_time = Carbon::now()->isoFormat('HH:mm:ss');
-      //$form->id = $request->session()->get('user_id');
-      $status->save();
+      User::startWork();
+      $status = Status::startWork();
       return view('status.add',['status'=>$status]);
     }
 
     public function add(Request $request){
-      if(Status::query()->where('kinmu_flag','=','1') != null){
+      if(User::isWork()){
         return view('status.status');
       }
       $status = Status::today()->first();
@@ -39,9 +33,10 @@ class StatusController extends Controller
     }
 
     public function update(Request $request){
-      if(Status::query()->where('kinmu_flag','=','1')->count()== 0){
+      if(!User::isWork()){
         return view('status.status',['msg'=>'あなたは出勤していません']);
       }
+      User::finishWork();
       $update = ['kinmu_flag'=>0,'end_time'=>Carbon::now()->isoFormat('HH:mm:ss'),];
       Status::query()->where('user_id',Auth::user()->id)->where('kinmu_flag','=','1')->update($update);
       $status = Status::today()->orderBy('begin_time','desc')->first();
@@ -50,11 +45,8 @@ class StatusController extends Controller
     }
 
     public function kakunin (Request $request){
-      $statuses = Status::all();
+      $statuses = Status::getHistory();
       return view('status.kakunin',['statuses'=>$statuses]);
     }
 
-    public function admin (Request $request){
-      return view('admin.adminMenu');
-    }
 }

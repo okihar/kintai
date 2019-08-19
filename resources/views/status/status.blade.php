@@ -1,4 +1,6 @@
 @extends('layouts.kintaiapp')
+@extends('layouts.app')
+@section('title','メニュー画面')
 <!doctype html>
 <html>
     <head>
@@ -26,7 +28,7 @@
       {{csrf_field()}}
     <input type = "submit" value = "確認"class = "submit" >
     </form>
-    <form action = "/status/admin" method  ="post">
+    <form action = "./admin" method  ="post">
       {{csrf_field()}}
     <input type = "submit" value = "管理者"class = "submit" >
     </form>

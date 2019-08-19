@@ -3,14 +3,14 @@
 <body>
   <form action = "/status" method  ="get">
   <input type = "submit" value = "戻る" >
-  @isset($status)
-  @section('table')
+  @isset($statuses)
   <table>
     <tr><th>id</th>
       <th>日付</th>
       <th>出勤時刻</th>
       <th>退勤時刻</th>
     </tr>
+    @foreach($statuses as $status)
     <tr>
       <td>{{$status->user_id}}</td>
       <td>{{$status->date}}</td>
@@ -19,8 +19,8 @@
       <td>{{$status->end_time}}</td>
       @endif
     </tr>
+    @endforeach
   </table>
-  @endsection
   @endisset
 </body>
 </html>

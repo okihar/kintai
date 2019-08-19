@@ -1,5 +1,7 @@
 @extends('layouts.kintaiapp')
+@extends('layouts.app')
 @section('title','管理者画面')
+<title>{{ config('app.name', 'Kintai') }}</title>
 <!doctype html>
 <html>
     <head>
@@ -7,7 +9,7 @@
     <body>
     <form action = "/admin/today" method  ="post">
       {{csrf_field()}}
-    <input type = "submit" value = "本日の勤怠" class = "submit"  >
+    <input type = "submit" value = "勤務中一覧" class = "submit"  >
     </form>
     <form action = "/status/update" method  ="post">
       {{csrf_field()}}

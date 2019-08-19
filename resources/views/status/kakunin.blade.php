@@ -24,7 +24,6 @@
     </tr>
     @endforeach
   </table>
-
   @endisset
   @endsection
 </body>

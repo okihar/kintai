@@ -15,6 +15,9 @@
                     @endif
 
                     You are logged in!
+
+                    <form action = "/status" method  ="get">
+                    <input type = "submit" value = "メニュー" >
                 </div>
             </div>
         </div>
