@@ -10,8 +10,8 @@ use Carbon\Carbon;
 class StatusController extends Controller
 {
     public function index (Request $request){
-      $status = Status::all();
-      return view('status.status',['status'=>$status]);
+      $user = Auth::user();
+      return view('status.status',['user'=>$user]);
     }
 
     public function create(Request $request){
@@ -52,5 +52,9 @@ class StatusController extends Controller
     public function kakunin (Request $request){
       $statuses = Status::all();
       return view('status.kakunin',['statuses'=>$statuses]);
+    }
+
+    public function admin (Request $request){
+      return view('admin.adminMenu');
     }
 }

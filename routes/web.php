@@ -10,6 +10,8 @@ Route::get('/status/update','StatusController@index')->middleware('auth');
 Route::post('/status/update','StatusController@update')->middleware('auth');
 Route::get('/status/kakunin','StatusController@kakunin')->middleware('auth');
 Route::post('/status/kakunin','StatusController@kakunin')->middleware('auth');
+Route::get('/status/admin','StatusController@admin')->middleware('auth');
+Route::post('/status/admin','StatusController@admin')->middleware('auth');
 
 
 Auth::routes();

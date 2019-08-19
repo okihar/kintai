@@ -1,4 +1,4 @@
-@extends('layouts.kintai')
+@extends('layouts.kintaiapp')
 
 <html>
 <body>
