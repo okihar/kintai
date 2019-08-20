@@ -52,4 +52,5 @@ class User extends Authenticatable
     public function scopeFinishWork($query){
       $query->where('id','=',Auth::user()->id)->update(['kinmu_flag'=>0]);
     }
+
 }

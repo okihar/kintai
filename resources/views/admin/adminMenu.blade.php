@@ -11,9 +11,8 @@
       {{csrf_field()}}
     <input type = "submit" value = "勤務中一覧" class = "submit"  >
     </form>
-    <form action = "/status/update" method  ="post">
+    <form action = "/admin/history" method  ="get">
       {{csrf_field()}}
-    <input type = "hidden" name  ="end_time">
     <input type = "submit" value = "勤務時間一覧"class = "submit" >
     </form>
     <form action = "/status/kakunin" method  ="post">

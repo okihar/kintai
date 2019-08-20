@@ -45,7 +45,7 @@ class StatusController extends Controller
     }
 
     public function kakunin (Request $request){
-      $statuses = Status::getHistory();
+      $statuses = Status::getHistory(Auth::user()->id);
       return view('status.kakunin',['statuses'=>$statuses]);
     }
 

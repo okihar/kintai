@@ -1,16 +1,30 @@
 @extends('layouts.kintaiapp')
+
 <html>
 <body>
   <form action = "/admin" method  ="get">
   <input type = "submit" value = "戻る" >
-  @isset($statuses)
+  確認画面
+</form>
+
+　<form action = "./history" method  ="post">
+      {{csrf_field()}}
+      <select name = "id">
+      @foreach($users as $user)
+        <option value="{{ $user->id }}">{{ $user->name }}</option>
+      @endforeach
+    　</select>
+    <input type = "submit" value = "選択">
+  </form>
   @section('table')
+
   <table>
     <tr><th>id</th>
       <th>日付</th>
       <th>出勤時刻</th>
       <th>退勤時刻</th>
     </tr>
+    @isset($statuses)
     @foreach($statuses as $status)
     <tr>
       <td>{{$status->user_id}}</td>
@@ -22,7 +36,7 @@
     </tr>
     @endforeach
   </table>
-  @endsection
   @endisset
+  @endsection
 </body>
 </html>

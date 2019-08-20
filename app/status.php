@@ -35,8 +35,8 @@ class Status extends Model
       return $status;
     }
 
-    public function scopeGetHistory($query){
-      return $query->where('user_id','=',Auth::user()->id)->get();
+    public function scopeGetHistory($query,$id){
+      return $query->where('user_id','=',$id)->get();
     }
 
 }

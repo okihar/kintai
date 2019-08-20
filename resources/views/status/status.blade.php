@@ -28,7 +28,7 @@
       {{csrf_field()}}
     <input type = "submit" value = "確認"class = "submit" >
     </form>
-    <form action = "./admin" method  ="post">
+    <form action = "/admin" method  ="post">
       {{csrf_field()}}
     <input type = "submit" value = "管理者"class = "submit" >
     </form>

@@ -15,7 +15,8 @@ Route::get('/admin','AdminController@adminMenu')->middleware('auth');
 Route::post('/admin','AdminController@adminMenu')->middleware('auth');
 Route::get('/admin/today','AdminController@getTodayStatus')->middleware('auth');
 Route::post('/admin/today','AdminController@getTodayStatus')->middleware('auth');
-
+Route::get('/admin/history','AdminController@getHistory')->middleware('auth');
+Route::post('/admin/history','AdminController@selectHistory')->middleware('auth');
 
 Auth::routes();
 
